@@ -1,42 +1,41 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class NumberIdentificationFromLine {
 
     private String line;
-    private ArrayList<Integer> numbers;
+    private List<Integer> numbers;
 
     public NumberIdentificationFromLine() {
         this.numbers = new ArrayList<>();
     }
 
-    private void setLine(String line) {
+    public void setLine(String line) {
         this.line = line;
     }
 
-    private ArrayList<Integer> getNumbers() {
+    public List<Integer> getNumbers() {
         return numbers;
     }
 
-    private void NumberIdentification(){
-
+    public void identifyNumbers() {
         numbers.clear();
-        //the pattern is matching positive and negative numbers too
-        Pattern pattern = Pattern.compile("\\b-?([1-9]\\d*)\\b");
+
+        // Revised pattern to match positive and negative integers including zero
+        Pattern pattern = Pattern.compile("-?\\b(0|[1-9]\\d*)\\b");
         Matcher matcher = pattern.matcher(line);
 
-        while(matcher.find()){
-            int number = Integer.parseInt(matcher.group(1));
+        while (matcher.find()) {
+            int number = Integer.parseInt(matcher.group());
             numbers.add(number);
         }
     }
 
-    public ArrayList<Integer> setLineAndGetNumbers(String line){
+    public List<Integer> setLineAndGetNumbers(String line) {
         setLine(line);
-        this.NumberIdentification();
-
+        identifyNumbers();
         return getNumbers();
     }
-
 }

@@ -9,9 +9,11 @@ public class Main {
         ArrayList<String> lines =  mySc.getLines();
         List<List<Integer>> numbersLists = new ArrayList<>();
         NumberIdentificationFromLine numId = new NumberIdentificationFromLine();
-        for(int i = 0; i < lines.size(); i++) {
-            numbersLists.add(numId.setLineAndGetNumbers(lines.get(i)));
+        for (String line : lines) {
+            numbersLists.add(numId.setLineAndGetNumbers(line));
+            //System.out.println(numId.setLineAndGetNumbers(line));
         }
+
         int resultOfProblem = ProblemSolver.solveProblem(numbersLists);
         System.out.println("result: " + resultOfProblem);
         /*List<Integer> numbers = Arrays.asList(10, 13, 16, 21, 30, 45);

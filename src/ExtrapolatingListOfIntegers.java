@@ -5,9 +5,13 @@ import static java.lang.Math.abs;
 
 public class ExtrapolatingListOfIntegers {
 
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
 
     public ExtrapolatingListOfIntegers(List<Integer> numbers){
+        this.numbers = numbers;
+    }
+
+    public void setNumbers(List<Integer> numbers) {
         this.numbers = numbers;
     }
 
