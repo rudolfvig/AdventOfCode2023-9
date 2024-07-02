@@ -10,15 +10,25 @@ public class Main {
         List<List<Integer>> numbersLists = new ArrayList<>();
         NumberIdentificationFromLine numId = new NumberIdentificationFromLine();
         for (String line : lines) {
-            numbersLists.add(numId.setLineAndGetNumbers(line));
+            numbersLists.add(new ArrayList<>(numId.setLineAndGetNumbers(line)));
             //System.out.println(numId.setLineAndGetNumbers(line));
         }
+        /*for (List<Integer> numbers : numbersLists){
+            System.out.println(numbers);
+        }*/
+        //System.out.println(numbersLists.get(0));
 
         int resultOfProblem = ProblemSolver.solveProblem(numbersLists);
         System.out.println("result: " + resultOfProblem);
-        /*List<Integer> numbers = Arrays.asList(10, 13, 16, 21, 30, 45);
-        ExtrapolatingListOfIntegers extrapolating = new ExtrapolatingListOfIntegers(numbers);
-        System.out.println(extrapolating.extrapolate());*/
+        int resultOfProblemPart2 = ProblemSolver.solveProblemPart2(numbersLists);
+        System.out.println("result for part2: " + resultOfProblemPart2);
 
+
+        /*System.out.println("Example:");
+        List<List<Integer>> example = new ArrayList<>();
+        example.add(Arrays.asList(0, 3, 6, 9, 12, 15));
+        example.add(Arrays.asList(1, 3, 6, 10, 15, 21));
+        example.add(Arrays.asList(10, 13, 16, 21, 30, 45));
+        System.out.println(ProblemSolver.solveProblemPart2(example));*/
     }
 }
