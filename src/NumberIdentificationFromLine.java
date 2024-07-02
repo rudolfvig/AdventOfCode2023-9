@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class NumberIdentificationFromLine {
 
     private String line;
-    private ArrayList<Long> numbers;
+    private ArrayList<Integer> numbers;
 
     public NumberIdentificationFromLine() {
         this.numbers = new ArrayList<>();
@@ -15,23 +15,24 @@ public class NumberIdentificationFromLine {
         this.line = line;
     }
 
-    private ArrayList<Long> getNumbers() {
+    private ArrayList<Integer> getNumbers() {
         return numbers;
     }
 
     private void NumberIdentification(){
 
         numbers.clear();
-        Pattern pattern = Pattern.compile("\\b(\\d+)\\b");
+        //the pattern is matching positive and negative numbers too
+        Pattern pattern = Pattern.compile("\\b-?([1-9]\\d*)\\b");
         Matcher matcher = pattern.matcher(line);
 
         while(matcher.find()){
-            Long number = Long.parseLong(matcher.group(1));
+            int number = Integer.parseInt(matcher.group(1));
             numbers.add(number);
         }
     }
 
-    public ArrayList<Long> setLineAndGetNumbers(String line){
+    public ArrayList<Integer> setLineAndGetNumbers(String line){
         setLine(line);
         this.NumberIdentification();
 
